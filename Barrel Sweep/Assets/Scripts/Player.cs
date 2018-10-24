@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     private Animator anim;
     public GameObject player;
+    public Enemy enemy;
         
     public float tweenSpeed = 2f;
     
@@ -58,4 +59,7 @@ public class Player : MonoBehaviour
             anim.SetTrigger("Blink");
            
     }
+
+    
+
 }
