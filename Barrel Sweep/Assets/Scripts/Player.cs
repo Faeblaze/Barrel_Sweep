@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     private Animator anim;
     public GameObject player;
     public Enemy enemy;
+    public int health;
+    public int TimeLeft;
         
     public float tweenSpeed = 2f;
     
@@ -50,6 +52,10 @@ public class Player : MonoBehaviour
             anim.SetTrigger("BarrelSweep01");
         if (Input.GetKeyDown(KeyCode.E)) 
             anim.SetTrigger("BarrelSweep");
+        if (Input.GetKeyDown(KeyCode.Z))
+            anim.SetTrigger("BS3");
+        if (Input.GetKeyDown(KeyCode.X))
+            anim.SetTrigger("BS4");
     }
 
     //channeling/stationary while holding, see field that can blink to, teleport to location of mouse direction on button release
@@ -60,6 +66,21 @@ public class Player : MonoBehaviour
            
     }
 
-    
+    // collect gems to increase time and kill enemies with animations or take damage
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Gem"))
+        {
+            Debug.Log(other.name);
+        }
+
+
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log("ENEMIES!!!!!");
+        }
+    }
+
+
 
 }
