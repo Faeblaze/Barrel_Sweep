@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Gem"))
         {
+
             Debug.Log(other.name);
         }
 
