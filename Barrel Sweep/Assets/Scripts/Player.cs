@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class Player : MonoBehaviour
     private Animator anim;
     public GameObject player;
     public Enemy enemy;
-    public int health;
-    public int TimeLeft;
+    public int health = 3;
+    public int TimeLeft = 60;
         
     public float tweenSpeed = 2f;
     
@@ -71,17 +72,26 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Gem"))
         {
-
+            // collect and detroy gameobject adding 10 seconds to timeleft counter
             Debug.Log(other.name);
         }
 
 
         if (other.CompareTag("Enemy"))
         {
+            //animations for Q,E,Z,X kill enemies
+            //otherwise deal 1 point damage to player health per second
             Debug.Log("ENEMIES!!!!!");
         }
     }
 
+    public void Die()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
-
+    private void Win()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
